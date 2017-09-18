@@ -1,0 +1,43 @@
+<section ng-app="todoList" ng-controller="TaskCtrl" id="container" class>
+  <header class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand navbar-brand-logo">
+      <div class="logo">
+        <img src="http://sj.uploads.im/d/SmAdq.png"/>
+      </div>
+    </a>
+    <span class="navbar-text" id="title-page">TO-DO LIST</span>
+  </header>
+
+  <section class="wrapper" ng-controller="TaskCtrl">
+
+    <form class="form-inline">
+      <div class="form-group mx-sm-3" id="form-input">
+        <input id="input-task" class="form-control" placeholder="Task name" type="text" ng-model="newTask.name">
+      </div>
+      <button class="btn btn-success" ng-click="addTask(newTask)" ng-disabled="!newTask.name">Add Task</button>
+    </form>
+
+    <ul class="list-group">
+      <li class="list-group-item" ng-repeat="task in tasks" ng-class="{done : task.is_done}">
+        <div>
+          <span id="task-title">{{task.name}}</span>
+          <div class="buttons">
+            <!--<button class="btn btn-info btn-sm"  ng-click="editName()">-->
+              <!--<i class="fa fa-pencil "></i>-->
+            <!--</button>-->
+            <button class="btn btn-success btn-sm"  ng-click="toggleDone(task)" ng-hide="task.is_done">
+              <i class="fa fa-check "></i>
+            </button>
+            <button class="btn btn-secondary btn-sm"  ng-click="toggleDone(task)" ng-hide="!task.is_done">
+              <i class="fa fa-undo "></i>
+            </button>
+            <button class="btn btn-danger btn-sm" ng-click="deleteTask(task)">
+              <i class="fa fa-trash-o "></i>
+            </button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+</section>
