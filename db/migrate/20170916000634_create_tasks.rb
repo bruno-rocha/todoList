@@ -3,7 +3,7 @@ class CreateTasks < ActiveRecord::Migration[5.1]
     create_table :tasks do |t|
       t.string :name
       t.boolean :is_done, default: false
-      t.boolean :has_high_prority, default: false
+      t.date :date
 
       t.timestamps
     end

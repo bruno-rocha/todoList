@@ -19,30 +19,31 @@
     align-items: center;
 }
 
-.task-checkbox {
-    float:left;
-    width:30px;
+.md-title {
+    text-align: center;
 }
 
-.buttons {
-    float: right;
-    clear: both;
+md-dialog .md-actions, md-dialog md-dialog-actions {
+    display: list-item;
 }
+
+md-input-container {
+    margin-top: 10px;
+    margin-bottom: -15px;
+}
+.md-primary .md-button {
+    margin: inherit;
+}
+
 
 .done {
     background-color: #d4edda;
 }
 
-.form-inline {
-    margin: 20px;
-}
-
-.form-inline > button{
-    width: 15%;
-}
-
-#form-input {
-    width: 80%;
+#btn-add{
+    width: 30%;
+    margin: 0 auto;
+    display: block;
 }
 
 #input-task{
