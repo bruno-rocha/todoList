@@ -10,21 +10,26 @@
 
   <section class="wrapper" ng-controller="TaskCtrl">
 
-    <form class="form-inline">
-      <div class="form-group mx-sm-3" id="form-input">
-        <input id="input-task" class="form-control" placeholder="Task name" type="text" ng-model="newTask.name">
+    <form>
+      <div class="form-group" id="form-input">
+        <div id="input-task" class="input-group">
+          <input class="form-control" placeholder="Task name" type="text" ng-model="newTask.name">
+          <span class="input-group-addon">
+            <md-datepicker ng-model="newTask.date"></md-datepicker>
+          </span>
+        </div>
       </div>
-      <button class="btn btn-success" ng-click="addTask(newTask)" ng-disabled="!newTask.name">Add Task</button>
-    </form>
+      <button id="btn-add" class="btn btn-success" ng-click="addTask(newTask)" ng-disabled="!newTask.name">Add Task</button>
+    </form><br>
 
     <ul class="list-group">
       <li class="list-group-item" ng-repeat="task in tasks" ng-class="{done : task.is_done}">
-        <div>
-          <span id="task-title">{{task.name}}</span>
-          <div class="buttons">
-            <!--<button class="btn btn-info btn-sm"  ng-click="editName()">-->
-              <!--<i class="fa fa-pencil "></i>-->
-            <!--</button>-->
+        <div class="row">
+          <div class="col-auto mr-auto">
+            <span id="task-title">{{task.name}}</span><br>
+            <span id="task-title" class="badge badge-info" ng-show="task.date != null" >    {{task.date | date}}</span>
+          </div>
+          <div class="col-auto">
             <button class="btn btn-success btn-sm"  ng-click="toggleDone(task)" ng-hide="task.is_done">
               <i class="fa fa-check "></i>
             </button>

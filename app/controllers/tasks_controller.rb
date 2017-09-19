@@ -1,5 +1,4 @@
 class TasksController < ApplicationController
-  # skip_before_filter :verify_authenticity_token
 
   def index
     @tasks = Task.all
@@ -10,16 +9,6 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     respond_with(@task)
   end
-  #
-  # def new
-  #   @task = Task.new
-  #   respond_with(@task)
-  # end
-
-  # def edit
-  #   @task = Task.find(params[:id])
-  #   respond_with(@task)
-  # end
 
   def create
     @task = Task.create(optional_params)
@@ -41,7 +30,7 @@ class TasksController < ApplicationController
   private
 
   def optional_params
-    params.require(:task).permit(:name)
+    params.require(:task).permit(:name, :date)
   end
 
   def done_params

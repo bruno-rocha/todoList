@@ -17,7 +17,7 @@
 // require turbolinks
 // require_tree .
 
-app = angular.module("todoList", ['ngResource']);
+app = angular.module("todoList", ['ngResource', 'ngMaterial']);
 
 app.factory('Task', ['$resource', function ($resource) {
     return $resource("/tasks/:id.json", {id: "@id"}, {
@@ -29,19 +29,13 @@ app.controller('TaskCtrl', ['$scope', 'Task', function ($scope, Task) {
     $scope.tasks = Task.query();
 
     $scope.addTask = function (newTask) {
-        var task = Task.save({name : newTask.name});
+        var task = Task.save({name : newTask.name, date: newTask.date});
         $scope.tasks.push(task);
     };
 
     $scope.toggleDone = function (task) {
         task.is_done = !task.is_done;
         Task.update({'id' : task.id}, task);
-    };
-
-    $scope.editName = function (task) {
-        // var  = !task.is_done;
-        // task.is_done = status;
-        // Task.update({'id' : task.id}, task);
     };
 
     $scope.deleteTask = function (oldTask) {
